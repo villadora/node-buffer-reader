@@ -26,8 +26,5 @@ describe('BufferReader', function() {
         assert.closeTo(reader.nextFloatBE(), 1.2345, 0.00001);
         var rest = reader.restAll();
         assert.equal(rest.length, 4);
-        rest.toJSON().forEach(function(val) {
-            assert(val === 3);
-        });
     });
 });
