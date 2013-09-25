@@ -1,4 +1,4 @@
-# Node Buffer Raader
+# Node Buffer Reader
 
 Make raeding data from a binary buffer easily.
 
