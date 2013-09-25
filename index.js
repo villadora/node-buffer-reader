@@ -1,3 +1,7 @@
+"use strict";
+
+var assert = require('assert');
+
 function BufferReader(buffer) {
     assert(Buffer.isBuffer(buffer), 'A Buffer must be provided');
     this.buf = buffer;
@@ -6,7 +10,7 @@ function BufferReader(buffer) {
 
 BufferReader.prototype.append = function(buffer) {
     assert(Buffer.isBuffer(buffer), 'A Buffer must be provided');
-    this.buf = Buffer.concat(this.buf, buffer);
+    this.buf = Buffer.concat([this.buf, buffer]);
     return this;
 };
 
@@ -32,7 +36,7 @@ BufferReader.prototype.restAll = function() {
     assert(remain >= 0, 'Buffer is not in normal state: offset > totalLength');
     var buf = new Buffer(remain);
     this.buf.copy(buf, 0, this.offset);
-    this.offset += length;
+    this.offset = this.buf.length;
     return buf;
 };
 
