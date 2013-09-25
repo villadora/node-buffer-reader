@@ -3,6 +3,7 @@
 var assert = require('assert');
 
 function BufferReader(buffer) {
+    buffer = buffer || new Buffer(0);
     assert(Buffer.isBuffer(buffer), 'A Buffer must be provided');
     this.buf = buffer;
     this.offset = 0;
@@ -81,7 +82,7 @@ MAKE_NEXT_READER_BOTH('Int16', 2);
 MAKE_NEXT_READER_BOTH('UInt32', 4);
 MAKE_NEXT_READER_BOTH('Int32', 4);
 MAKE_NEXT_READER_BOTH('Float', 4);
-MAKE_NEXT_READER_BOTH('Dboule', 8);
+MAKE_NEXT_READER_BOTH('Double', 8);
 
 function cap(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
