@@ -1,0 +1,23 @@
+{
+    "name": "buffer-reader",
+    "version": "0.0.1",
+    "description": "a reader for nodejs buffer",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": "",
+    "keywords": [],
+    "dependencies": {},
+    "devDependencies": {
+        "jshint": "~2.1.9",
+        "mocha": "~1.12.0",
+        "chai": "~1.7.2"
+    },
+    "readmeFilename": "README.md",
+    "author": {
+        "name": "wei.gao",
+        "email": "jky239@gmail.com"
+    },
+    "license": "BSD"
+}
