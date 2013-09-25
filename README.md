@@ -2,6 +2,11 @@
 
 Make raeding data from a binary buffer easily.
 
+
+<!--- travis ci -->
+[![Build Status](https://travis-ci.org/villadora/node-buffer-reader.png?branch=master)](https://travis-ci.org/villadora/node-buffer-reader)
+
+
 ## Install
 
 npm install buffer-reader
