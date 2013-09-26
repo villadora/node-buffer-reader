@@ -20,13 +20,13 @@ BufferReader.prototype.tell = function() {
 };
 
 BufferReader.prototype.seek = function(pos) {
-    assert(pos > 0 && pos < this.buf.length, 'Position is Invalid');
+    assert(pos >= 0 && pos <= this.buf.length, 'Position is Invalid');
     this.offset = pos;
     return this;
 };
 
 BufferReader.prototype.move = function(diff) {
-    assert(this.offset + diff >= 0 && this.offset + diff < this.buf.length, 'Difference is Invalid');
+    assert(this.offset + diff >= 0 && this.offset + diff <= this.buf.length, 'Difference is Invalid');
     this.offset += diff;
     return this;
 };
@@ -44,7 +44,7 @@ BufferReader.prototype.restAll = function() {
 
 BufferReader.prototype.nextBuffer = function(length) {
     assert(length >= 0, 'Length must be no negative');
-    assert(this.offset + length < this.buf.length, "Out of Original Buffer's Boundary");
+    assert(this.offset + length <= this.buf.length, "Out of Original Buffer's Boundary");
     var buf = new Buffer(length);
     this.buf.copy(buf, 0, this.offset, this.offset + length);
     this.offset += length;
@@ -53,7 +53,7 @@ BufferReader.prototype.nextBuffer = function(length) {
 
 BufferReader.prototype.nextString = function(length, encoding) {
     assert(length >= 0, 'Length must be no negative');
-    assert(this.offset + length < this.buf.length, "Out of Original Buffer's Boundary");
+    assert(this.offset + length <= this.buf.length, "Out of Original Buffer's Boundary");
 
     this.offset += length;
     return this.buf.toString(encoding || 'utf8', this.offset - length, this.offset);
@@ -63,7 +63,7 @@ BufferReader.prototype.nextString = function(length, encoding) {
 function MAKE_NEXT_READER(valueName, size) {
     valueName = cap(valueName);
     BufferReader.prototype['next' + valueName] = function() {
-        assert(this.offset + size < this.buf.length, "Out of Original Buffer's Boundary");
+        assert(this.offset + size <= this.buf.length, "Out of Original Buffer's Boundary");
         var val = this.buf['read' + valueName](this.offset);
         this.offset += size;
         return val;

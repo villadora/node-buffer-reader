@@ -1,6 +1,6 @@
 {
     "name": "buffer-reader",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "a reader for nodejs buffer",
     "main": "index.js",
     "scripts": {
