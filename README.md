@@ -1,6 +1,6 @@
 # Node Buffer Reader
 
-Make raeding data from a binary buffer easily.
+Make reading data from a binary buffer easily.
 
 
 <!--- travis ci -->
