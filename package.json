@@ -13,7 +13,7 @@
   "keywords": [],
   "dependencies": {},
   "devDependencies": {
-    "buffer-builder": "prodatakey/node-buffer-builder",
+    "buffer-builder": "^0.2.0",
     "chai": "~1.7.2",
     "grunt": "^0.4.5",
     "grunt-contrib-jshint": "^0.10.0",
