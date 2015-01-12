@@ -32,7 +32,7 @@ BufferReader.prototype.move = function(diff) {
 };
 
 
-Buffer.prototype.nextAll =
+BufferReader.prototype.nextAll =
 BufferReader.prototype.restAll = function() {
     var remain = this.buf.length - this.offset;
     assert(remain >= 0, 'Buffer is not in normal state: offset > totalLength');
