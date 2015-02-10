@@ -32,6 +32,7 @@ BufferReader.prototype.move = function(diff) {
 };
 
 
+BufferReader.prototype.nextAll =
 BufferReader.prototype.restAll = function() {
     var remain = this.buf.length - this.offset;
     assert(remain >= 0, 'Buffer is not in normal state: offset > totalLength');
@@ -56,7 +57,17 @@ BufferReader.prototype.nextString = function(length, encoding) {
     assert(this.offset + length <= this.buf.length, "Out of Original Buffer's Boundary");
 
     this.offset += length;
-    return this.buf.toString(encoding || 'utf8', this.offset - length, this.offset);
+    return this.buf.toString(encoding, this.offset - length, this.offset);
+};
+
+BufferReader.prototype.nextStringZero = function(encoding) {
+    // Find null by end of buffer
+    for(var length = 0; length + this.offset < this.buf.length && this.buf[this.offset + length] !== 0x00; length++) ;
+    
+    assert(length <= this.buf.length && this.buf[this.offset + length] === 0x00, "Out of Original Buffer's Boundary");
+
+    this.offset += length + 1;
+    return this.buf.toString(encoding, this.offset - length - 1, this.offset - 1);
 };
 
 
