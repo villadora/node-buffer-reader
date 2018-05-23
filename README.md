@@ -76,6 +76,9 @@ Read a buffer with specified length
 ### nextString(length, [encoding])
 Read next length of bytes as String, encoding default is 'utf8'
 
+### nextStringZero([encoding])
+Read next bytes till the end of buffer as null-terminated string, encoding default is 'utf8'.
+
 ### next(Int8|UInt8)\[(Int16|UInt16|Int32|UInt32|Float|Double)(LE|BE)\]()
 Read next bytes as given types, the value is just as the same format Buffer in nodejs doc.
 
