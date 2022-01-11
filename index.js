@@ -70,6 +70,24 @@ BufferReader.prototype.nextStringZero = function(encoding) {
     return this.buf.toString(encoding, this.offset - length - 1, this.offset - 1);
 };
 
+BufferReader.prototype.nextVarUIntBE = function() {
+    const n = this.nextUInt8();
+    const k = { 0xfd: 'nextUInt16BE', 0xfe: 'nextUInt32BE', 0xff: 'nextBigUInt64BE' }[n];
+    if (k) {
+        return this[k]();
+    }
+    return n;
+};
+
+BufferReader.prototype.nextVarUIntLE = function() {
+    const n = this.nextUInt8();
+    const k = { 0xfd: 'nextUInt16LE', 0xfe: 'nextUInt32LE', 0xff: 'nextBigUInt64LE' }[n];
+    if (k) {
+        return this[k]();
+    }
+    return n;
+};
+
 
 function MAKE_NEXT_READER(valueName, size) {
     valueName = cap(valueName);
